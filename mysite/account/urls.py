@@ -17,5 +17,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^', views.get_signup, name='get_signup'),
+    url(r'^', views.register, name='register'),
 ]
