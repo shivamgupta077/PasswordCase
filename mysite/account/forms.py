@@ -1,8 +1,8 @@
 from django import forms
-from .models import Case
+from .models import Case, Profile, Passwords
 
 class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
-        fields = ('username', 'password', 'mobilenum', 'ans1', 'ans2', 'ans3', 'ans4', 'ans5', )
+        fields = ('username', 'password', 'phone_number', 'answer1', 'answer2', 'answer3', 'answer4', 'answer5')
 
