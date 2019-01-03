@@ -4,6 +4,7 @@
 <head>
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
         #header
         {
@@ -11,35 +12,32 @@
             display: block;
             margin: 0px;
             padding: 0px;
-            height: 30%;
+            height: 25%;
             background-color: black;
         }
     </style>
 </head>
 <body style="margin: 0px; padding: 0px;">
     <div class="page-header" id="header">
-        <h1 style="color: White; margin-left: 30px; padding: 30px; padding-bottom: 0px; margin-bottom: 0px;">Password Case</h1>
-        <h3 style="color: Yellow; margin-left: 30px; padding: 30px; padding-top: 0px; margin-top: 0px;">Your suitcase to store all your passwords securely.</h3>
+        <image style="margin-top: 30px;" src = "{% static '/account/icon.jpg' %}"/>
+        <h3 style="color: Yellow; margin-left: 40px; margin-top: 0px;">Your suitcase to store all your passwords securely.</h3>
     </div>
-    <table style="width:100%">
-        <tr>
-            <td>
-                <div style="margin: 0px; padding: 0px;">
-                    <image src="{% static '/account/home.jpg' %}"/>
-                </div>
-            </td>
-            <td>
-                <div>
-                    <form method="POST" class="post-form" style="text-align: left">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="save btn btn-default">Save</button>
-                        <h4>Already registered?</h4>
-                        <button type="submit" class="save btn btn-default">Click Here</button>
-                    </form>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <h1 style="font-family: 'Oswald', sans-serif; margin-left: 20px;">Create an account.</h1>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+            <h4><label>Enter your name: </label>{{ form.username }}</h4>
+            <h4><label>Enter Password: </label>{{ form.password }}</h4>
+            <h4><label>Enter your phone number: </label>{{ form.phone_number }}</h4>
+            <h4><label>ans1: </label>{{ form.answer1 }}</h4>
+            <h4><label>ans2: </label>{{ form.answer2 }}</h4>
+            <h4><label>ans3: </label>{{ form.answer3 }}</h4>
+            <h4><label>ans4: </label>{{ form.answer4 }}</h4>
+            <h4><label>ans5: </label>{{ form.answer5 }}</h4>
+            <button type="submit" class="btn btn-info btn-block" onClick="location.href='{% url 'login' %}'">Find</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
