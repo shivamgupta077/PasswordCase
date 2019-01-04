@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Password Case</title>
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link rel="stylesheet" href="https://bootswatch.com/lux/bootstrap.min.css">
@@ -14,7 +14,7 @@
             display: block;
             margin: 0px;
             padding: 0px;
-            height: 25%;
+            margin-bottom: 20px;
             background-color: black;
         }
     </style>
@@ -23,55 +23,26 @@
 <body style="margin: 0px; padding: 0px;">
     <div class="page-header" id="header">
         <image style="margin-top: 30px;" src = "{% static '/account/icon.jpg' %}"/>
-        <h3 style="color: Yellow; margin-left: 40px; margin-top: 0px;">Your suitcase to store all your passwords securely.</h3>
+        <h5 style="color: Yellow; margin-left: 40px; margin-top: 0px; margin">Your suitcase to store all your passwords securely.</h5>
     </div>
-    <h1 style="font-family: 'Oswald', sans-serif; margin-left: 20px;">Create an account.</h1>
-    
-    
-    
-    
-    
-    
     <form>
-  <fieldset>
-    <legend>Enter you Details</legend>
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label class="col-form-label" for="inputDefault">Mobile Number</label>
-      <input type="text" class="form-control" placeholder="Enter Ten Digit number" id="inputDefault">
-    </div>
-      
-    <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'login' %}'">Submit</button>
-  </fieldset>
-</form>
-    
-    <!--
-    <div>
-        <form method="post">
-            {% csrf_token %}
-            <div>
-            <h4><label>Enter your name: </label>{{ form.username }}</h4>
-            <h4><label>Enter Password: </label>{{ form.password }}</h4>
-            <h4><label>Enter your phone number: </label>{{ form.phone_number }}</h4>
-            <h4><label>ans1: </label>{{ form.answer1 }}</h4>
-            <h4><label>ans2: </label>{{ form.answer2 }}</h4>
-            <h4><label>ans3: </label>{{ form.answer3 }}</h4>
-            <h4><label>ans4: </label>{{ form.answer4 }}</h4>
-            <h4><label>ans5: </label>{{ form.answer5 }}</h4>
-            <button type="submit" class="btn btn-info btn-block" onClick="location.href='{% url 'login' %}'">Find</button>
-            </div>
-        </form>
-    </div>
-    -->
-
+    <fieldset style="margin-left: 20px;">
+        <legend style="font-family: 'Oswald', sans-serif;">Create an account.</legend>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="Enter Ten Digit number" id="inputDefault">
+        </div>
+        <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'login' %}'">Submit</button>
+    </fieldset>
+    </form>
 </body>
 </html>
