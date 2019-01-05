@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import RegisterForm, LoginForm
 from .models import Case, Profile, Passwords
-
+from .encryption import encrypt
 # Create your views here.
 def register(request):
     if request.method=='POST':
@@ -11,7 +11,9 @@ def register(request):
             case = Case()
             case.username = form.cleaned_data.get("username")
             case.password = form.cleaned_data.get("password")
-            case.phone_number = form.cleaned_data.get("mobilenum")
+            x,y = encrypt(case.password)
+            case.password = x
+            case.phone_number = form.cleaned_data.get("phone_number")
             case.answer1 = form.cleaned_data.get("answer1")
             case.answer2 = form.cleaned_data.get("answer2")
             case.answer3 = form.cleaned_data.get("answer3")
