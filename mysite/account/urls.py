@@ -17,7 +17,13 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+<<<<<<< HEAD
     url(r'^$', views.register, name='register'),
     url(r'login/', views.login, name='login'),
     url(r'addPassword/', views.addPassword, name='addPassword'),
+=======
+    url(r'^login/', views.login, name='login'),
+    url(r'^', views.register, name='register'),
+    
+>>>>>>> 8860e33bee324f39168e82f90c176c1a309012ba
 ]

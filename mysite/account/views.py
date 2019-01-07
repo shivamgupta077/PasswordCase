@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm, AddPasswordForm
 from .models import Case, Profile, Passwords
 from .encryption import encrypt
+<<<<<<< HEAD
 from .getPasswords import main
 def is_valid(request):
     u=request['username_input']
@@ -10,7 +11,17 @@ def is_valid(request):
     if u != None and p!= None and m!= None:
         return True
     return False
+=======
+>>>>>>> 8860e33bee324f39168e82f90c176c1a309012ba
 # Create your views here.
+def is_valid(request):
+    u=request['username_input']
+    p=request['password_input']
+    m=request['number_input']
+    if u != None and p!= None and m!= None:
+        return True
+    return False
+        
 def register(request):
     print(request.method)
     if request.method=='POST':
@@ -23,7 +34,11 @@ def register(request):
             case = Case()
             case.username = request.POST['username_input']
             case.password = request.POST['password_input']
+<<<<<<< HEAD
             x = encrypt(case.password)
+=======
+            x,y = encrypt(case.password)
+>>>>>>> 8860e33bee324f39168e82f90c176c1a309012ba
             case.password = x
             case.phone_number = request.POST['number_input']
             profile = Profile()

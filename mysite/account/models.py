@@ -17,4 +17,10 @@ class Passwords(models.Model):
     website = models.CharField(max_length=20)
     email = models.CharField(max_length=100)
     eccrypted_password = models.CharField(max_length=100)
+<<<<<<< HEAD
     belongs_to = models.ForeignKey(Profile, on_delete=models.CASCADE)
+=======
+    belongs_to = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+
+>>>>>>> 8860e33bee324f39168e82f90c176c1a309012ba
