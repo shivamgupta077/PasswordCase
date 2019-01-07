@@ -9,3 +9,8 @@ class RegisterForm(forms.ModelForm):
 class LoginForm(forms.Form):
     inp_username = forms.CharField(label="Username ", max_length=100)
     inp_password = forms.CharField(label="Password ", max_length=100)
+
+class AddPasswordForm(forms.Form):
+    website = forms.CharField(label = "Website",max_length = 100)
+    email = forms.CharField(label="Email", max_length=100)
+    password = forms.CharField(label="Password", max_length=100)

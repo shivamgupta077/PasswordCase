@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .forms import RegisterForm, LoginForm
+from django.shortcuts import render, redirect
+from .forms import RegisterForm, LoginForm, AddPasswordForm
 from .models import Case, Profile, Passwords
 from .encryption import encrypt
 from .getPasswords import main
@@ -32,8 +32,9 @@ def register(request):
             case.save()
 
             blank_form = LoginForm()
-            context = {'form': blank_form, 'inp': "abc"}
-            return render(request, 'account/login.html', context)
+            context = {'form': blank_form}
+            #return render(request, 'account/login.html', context)
+            return redirect(login)
         else:
             blank_form = RegisterForm()
             context = {'form': blank_form}
@@ -61,14 +62,12 @@ def login(request):
                     break
             if ReqObj==None:
                 blank_form = LoginForm()
-                context = {'form': blank_form,'inp' : obj.password}
+                context = {'form': blank_form}
                 return render(request, 'account/login.html', context)
             #
             #
             #Collect all data of ReqObj and send it to template.
             myDict = main(inpusername,inppassword)
-
-
             #
             #
             context = {'info' : myDict}
@@ -76,8 +75,32 @@ def login(request):
         else:
             blank_form = LoginForm()
             context = {'form': blank_form}
-            return render(request, 'account/hello.html', context)
+            return render(request, 'account/login.html', context)
     else:   #if get method, create a blank form.
         blank_form = LoginForm()
-        context = {'form': blank_form,'inp' : "abc"}
+        context = {'form': blank_form}
         return render(request, 'account/login.html', context)
+
+def addPassword(request):
+    if request.method == 'POST':
+        form = AddPasswordForm(request.POST)
+        if form.is_valid():
+            website = form.cleaned_data.get("website")
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password")
+
+            password = encrypt(password)
+
+            obj = Passwords()
+            obj.email = email
+            obj.eccrypted_password = password
+            obj.website = website
+            obj.save()
+            context = {}
+            return render(request,'account/hello.html',context)
+
+    else:
+        blank_form = AddPasswordForm()
+        context = {'form' : blank_form}
+        return render(request,'account/addPassword.html',context)
+
