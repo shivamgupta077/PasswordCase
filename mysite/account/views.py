@@ -3,22 +3,29 @@ from .forms import RegisterForm, LoginForm
 from .models import Case, Profile, Passwords
 from .encryption import encrypt
 # Create your views here.
+def is_valid(request):
+    u=request['username_input']
+    p=request['password_input']
+    m=request['number_input']
+    if u != None and p!= None and m!= None:
+        return True
+    return False
+        
 def register(request):
+    print(request.method)
     if request.method=='POST':
+        print(request.POST)
         form = RegisterForm(request.POST)
-        if form.is_valid():
+        print(form)
+        if is_valid(request.POST):
             #Save input in database
+            print(request)
             case = Case()
-            case.username = form.cleaned_data.get("username")
-            case.password = form.cleaned_data.get("password")
+            case.username = request.POST['username_input']
+            case.password = request.POST['password_input']
             x,y = encrypt(case.password)
             case.password = x
-            case.phone_number = form.cleaned_data.get("phone_number")
-            case.answer1 = form.cleaned_data.get("answer1")
-            case.answer2 = form.cleaned_data.get("answer2")
-            case.answer3 = form.cleaned_data.get("answer3")
-            case.answer4 = form.cleaned_data.get("answer4")
-            case.answer5 = form.cleaned_data.get("answer5")
+            case.phone_number = request.POST['number_input']
             profile = Profile()
             profile.save()
             case.place = profile
