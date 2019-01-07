@@ -6,6 +6,6 @@ class RegisterForm(forms.ModelForm):
         model = Case
         fields = ('username', 'password', 'phone_number', 'answer1', 'answer2', 'answer3', 'answer4', 'answer5')
 
-class LoginForm(forms.ModelForm):
+class LoginForm(forms.Form):
     inp_username = forms.CharField(label="Username ", max_length=100)
     inp_password = forms.CharField(label="Password ", max_length=100)

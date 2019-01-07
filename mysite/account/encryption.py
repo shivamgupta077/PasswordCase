@@ -256,12 +256,12 @@ def encrypt(text):
         cipherBlocks.append(P)
         myCipher += blockToStr(P)
 
-    return myCipher, cipherBlocks
+    return myCipher
 
 
-def decrypt(cipherBlocks):
+def decrypt(myCipher):
     Ckey = "10100010100101011110001111100011011111110000000000111101"  # 56 bits
-
+    cipherBlocks = strToBlock(myCipher)
     numberOfShift = []
 
     for i in range(16):
@@ -324,4 +324,4 @@ def decrypt(cipherBlocks):
 
     return toReturn
 
-
+# vNs%I~âU♦O7?º»|O

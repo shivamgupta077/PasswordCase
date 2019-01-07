@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
+<body>
+{{inp}}
+<form method="post">
+            {% csrf_token %}
+                {{form.as_p}}
+                <div class="col-sm-1" style="margin: auto; padding: 10px;">
+                    <button type="submit" class="btn btn-info btn-block" onClick="location.href='{% url 'login' %}'">Find</button>
+                </div>
+        </form>
 </body>
 </html>

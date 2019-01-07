@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import RegisterForm, LoginForm
 from .models import Case, Profile, Passwords
 from .encryption import encrypt
+from .getPasswords import main
 # Create your views here.
 def register(request):
     if request.method=='POST':
@@ -11,7 +12,7 @@ def register(request):
             case = Case()
             case.username = form.cleaned_data.get("username")
             case.password = form.cleaned_data.get("password")
-            x,y = encrypt(case.password)
+            x = encrypt(case.password)
             case.password = x
             case.phone_number = form.cleaned_data.get("phone_number")
             case.answer1 = form.cleaned_data.get("answer1")
@@ -40,30 +41,35 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             #Save input in database
-            inpusername = form.cleaned_data.get("inpusername")
-            inppassword = form.cleaned_data.get("inppassword")
+            inpusername = form.cleaned_data.get("inp_username")
+            inppassword = form.cleaned_data.get("inp_password")
+            x= encrypt(inppassword)
+            inppassword = x
             CaseObjList = Case.objects.all()
             ReqObj = None
             for obj in CaseObjList:
-                if obj.username==inpusername and obj.password==inppassword:
+                if obj.username==inpusername and obj.password==x:
                     ReqObj = obj
                     break
             if ReqObj==None:
                 blank_form = LoginForm()
-                context = {'form': blank_form}
+                context = {'form': blank_form,'inp' : obj.password}
                 return render(request, 'account/login.html', context)
             #
             #
             #Collect all data of ReqObj and send it to template.
+            myDict = main(inpusername,inppassword)
+
+
             #
             #
-            context = {}
-            return render(request, 'account/profile.html', context)
+            context = {'info' : myDict}
+            return render(request, 'account/hello.html', context)
         else:
             blank_form = LoginForm()
             context = {'form': blank_form}
-            return render(request, 'account/login.html', context)
+            return render(request, 'account/hello.html', context)
     else:   #if get method, create a blank form.
         blank_form = LoginForm()
-        context = {'form': blank_form}
+        context = {'form': blank_form,'inp' : "abc"}
         return render(request, 'account/login.html', context)
