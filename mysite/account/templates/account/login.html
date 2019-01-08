@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <div class="col-sm-1" style="margin: auto; padding: 10px;">
-                <button type="submit" class="btn btn-info btn-block" onClick="location.href='{% url 'login' %}'">Find</button>
+{% extends 'account/base.html' %}
+{% block body %}
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset style="margin-left: 20px; margin-right: 20px;">
+            <legend style="font-family: 'Oswald', sans-serif;">Enter your account details.</legend>
+            <div class="form-group">
+                <label class="col-form-label" for="inputDefault">Username</label>
+                <input type="text" class="form-control" name="username_input" id="inputDefault" placeholder="Enter username">
             </div>
-        </form>
-    </body>
-</html>
+            <div class="form-group">
+                <label  class="col-form-label" for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password_input" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+    <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'register' %}'" style="float: right; margin-right: 20px;">REGISTER</button>
+    <label class="col-form-label" for="inputDefault" style="float: right; margin-right: 20px;">Don't have an account?</label>
+</body>
+{% endblock %}

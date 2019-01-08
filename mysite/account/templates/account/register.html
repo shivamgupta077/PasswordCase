@@ -1,52 +1,28 @@
-{% load staticfiles %}
-
-<html>
-<head>
-    <title>Password Case</title>
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <link rel="stylesheet" href="https://bootswatch.com/lux/bootstrap.min.css">
-    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.css">
-    <style>
-        #header
-        {
-            font-family: 'EB Garamond', serif;
-            display: block;
-            margin: 0px;
-            padding: 0px;
-            margin-bottom: 20px;
-            background-color: black;
-        }
-    </style>
-    
-</head>
-<body style="margin: 0px; padding: 0px;">
-    <div class="page-header" id="header">
-        <image style="margin-top: 30px;" src = "{% static '/account/icon.jpg' %}"/>
-        <h5 style="color: Yellow; margin-left: 40px; margin-top: 0px; margin">Your suitcase to store all your passwords securely.</h5>
-    </div>
+{% extends 'account/base.html' %}
+{% block body %}
+<body>
     <form method="POST">
-    {% csrf_token %}
-    <fieldset style="margin-left: 20px;">
-        <legend style="font-family: 'Oswald', sans-serif;">Create an account.</legend>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="username_input" aria-describedby="emailHelp" placeholder="Enter username">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        {% csrf_token %}
+        <fieldset style="margin-left: 20px; margin-right: 20px;">
+            <legend style="font-family: 'Oswald', sans-serif;">Create an account.</legend>
+            <div class="form-group">
+                <label class="col-form-label" for="inputDefault">Username</label>
+                <input type="text" class="form-control" name="username_input" id="inputDefault" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label  class="col-form-label" for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password_input" placeholder="Enter Password">
+            </div>
+            <div class="form-group">
+                <label class="col-form-label" for="inputDefault1">Mobile Number</label>
+                <input type="text" class="form-control"  name="number_input" id="inputDefault1" placeholder="+919999999999">
+                <small class="form-text text-muted">We'll never share your contact with anyone else.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password_input" placeholder="Enter Password">
-        </div>
-        <div class="form-group">
-            <label class="col-form-label" for="inputDefault">Mobile Number</label>
-            <input type="text" class="form-control"  name="number_input" id="inputDefault" placeholder="+919999999999">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </fieldset>
+        </fieldset>
     </form>
-    <br>
-            <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'login' %}'">LOGIN</button>
-
+    <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'login' %}'" style="float: right; margin-right: 20px;">LOGIN</button>
+    <label class="col-form-label" for="inputDefault" style="float: right; margin-right: 20px;">Already have an account?</label>
 </body>
-</html>
+{% endblock %}
