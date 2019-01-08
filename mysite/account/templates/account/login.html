@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-<body>
-{{request}}
-<form method="post">
+    <body>
+        <form method="post">
             {% csrf_token %}
-                {{form.as_p}}
-                <div class="col-sm-1" style="margin: auto; padding: 10px;">
-                    <button type="submit" class="btn btn-info btn-block" onClick="location.href='{% url 'login' %}'">Find</button>
-                </div>
+            {{form.as_p}}
+            <div class="col-sm-1" style="margin: auto; padding: 10px;">
+                <button type="submit" class="btn btn-info btn-block" onClick="location.href='{% url 'login' %}'">Find</button>
+            </div>
         </form>
-=======
-<head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-</head>
-    
-<body>
-    <h1>Welcome to login page</h1>
->>>>>>> 8860e33bee324f39168e82f90c176c1a309012ba
-</body>
+    </body>
 </html>
