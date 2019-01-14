@@ -11,7 +11,7 @@ def main(myObj):
             myList = []
             myList.append(obj.website)
             myList.append(obj.email)
-            password = decrypt(obj.eccrypted_password)
+            password = decrypt(obj.encrypted_password)
             myList.append(password)
             myDict.append(myList)
     return myDict

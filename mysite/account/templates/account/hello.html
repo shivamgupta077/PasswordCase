@@ -1,5 +1,8 @@
+<!DOCTYPE html>
 <html>
 <body>
+
+
  <div class="row row-buffer">
             <div class="col-sm-11" style="">
                 {% for line in info %}
@@ -13,7 +16,9 @@
             </div>
         </div>
 
- <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'addPassword' %}'">ADD</button>
+ <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'addPassword' id %}'">ADD</button>
+ <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'login' %}'">LOGOUT</button>
+
 
 
 
