@@ -183,4 +183,4 @@ def addPassword(request, id):
             context = {'form': blank_form, 'message': message, 'flag': flag, 'id': id}
             return render(request, 'account/addPassword.html', context)
     else:
-        redirect(login)
+        return redirect(login)
