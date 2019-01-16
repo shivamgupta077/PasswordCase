@@ -1,6 +1,15 @@
 {% extends 'account/base.html' %}
 {% block body %}
 <body>
+    <h5 id="alert" style="margin-left: 20px; margin-right: 20px; color: red;"></h5>
+    <script>
+        console.log("Working")
+        flag = {{ flag }}
+        if (flag == 1) {
+            message = "{{ message }}"
+            document.getElementById("alert").innerHTML = message
+        }
+    </script>
     <form method="POST">
         {% csrf_token %}
         <fieldset style="margin-left: 20px; margin-right: 20px;">
