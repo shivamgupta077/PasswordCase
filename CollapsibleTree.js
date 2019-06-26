@@ -54,11 +54,11 @@ looker.plugins.visualizations.add({
         layer = layer[key];
       });
       //
-      measure.forEach(function(t) {
-        var key = row[t.name].value;
-        layer[key] = key in layer ? layer[key] : {};
-        layer = layer[key];
-      });
+      //measure.forEach(function(t) {
+      //  var key = row[t.name].value;
+      //  layer[key] = key in layer ? layer[key] : {};
+      //  layer = layer[key];
+      //});
       //
       layer.__data = row;
     });
