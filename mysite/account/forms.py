@@ -12,6 +12,6 @@ class LoginForm(forms.Form):
 
 
 class AddPasswordForm(forms.Form):
-    website = forms.CharField(label = "Website",max_length = 100)
+    website = forms.CharField(label="Website", max_length = 100)
     email = forms.CharField(label="Email", max_length=100)
     password = forms.CharField(label="Password", max_length=100)

@@ -135,7 +135,7 @@ def profile(request, id):
             return redirect(login)
         myDict = main(myObj)
         context = {'info': myDict, 'id': id}
-        return render(request, 'account/hello.html', context)
+        return render(request, 'account/home.html', context)
     else:
         return redirect(login)
 
