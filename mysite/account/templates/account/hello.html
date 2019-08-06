@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Profile</title>
+</head>
+
+{% extends 'account/base.html' %}
+{% block body %}
+
 <body>
 
-
+<br>
  <div class="row row-buffer">
             <div class="col-sm-11" style="">
                 {% for line in info %}
@@ -10,19 +17,20 @@
                         {% for x in line%}
                             {{ x }}&nbsp;&nbsp;&nbsp;&nbsp;
                         {% endfor %}
+
                         <hr style="height: 1px; background: #333; background-image: linear-gradient(to right, #ccc, #333, #ccc);">
                     </h4>
                 {% endfor %}
             </div>
-        </div>
-
- <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'addPassword' id %}'">ADD</button>
+ </div>
+ <br>
+ <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'addPassword' id %}'" style="margin-left: 20px; margin-right: 20px;">ADD</button>
  <button type="submit" class="btn btn-primary" onClick="location.href='{% url 'login' %}'">LOGOUT</button>
 
 
 
 
 </body>
-
+{% endblock %}
 
 </html>
