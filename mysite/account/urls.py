@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'login/', views.login, name='login'),
     url(r'profile/(?P<id>[0-9]+)/', views.profile, name='profile'),
     url(r'addPassword/(?P<id>[0-9]+)/', views.addPassword, name='addPassword'),
+    url(r'api/getcred/', views.getcred, name='getcred'),
 ]
